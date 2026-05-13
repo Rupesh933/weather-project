@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Website</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'weather_app/style.css' %}">
+</head>
+<body>
+    <div class="container">
+        <h1>Weather Checker</h1>
+
+        <form method="post">
+            {% csrf_token %}
+            <input type="text" name="city" placeholder="Enter city name, e.g., Delhi / Noida" required>
+            <button type="submit">Get Weather</button>
+        </form>
+
+        {% if error %}
+        <div class="error">{{ error }}</div>
+        {% endif %}
+        {% if weather %}
+        <div class="weather-card">
+            <h2 class="">{{ weather.city }}, {{ weather.country }}</h2>
+            <div class="weather-main">
+                <img src="http://openweathermap.org/img/wn/{{ weather.icon }}@2x.png" alt="{{ weather.description }}">
+                <div class="tempreture">{{ weather.tempreture }}°C</div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
