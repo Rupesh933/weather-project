@@ -20,8 +20,6 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/6.0/howto/deployment/checklist/
 
-# Reading the API Key from .env
-WEATHER_API_KEY = config("WEATHER_API_KEY")
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = config('SECRET_KEY', default="django-insecure-&1nd_ju-t#1z!43(-^-nk3m%hv9t*^h&*s#m=2dj&9wdg#l1=2")
@@ -44,9 +42,8 @@ INSTALLED_APPS = [
     'weather_app',
 ]
 
-import os
 # API Key for OpenWeatherMap
-OPENWEATHER_API_KEY = os.getenv('OPENWEATHER_API_KEY')
+OPENWEATHER_API_KEY = config('OPENWEATHER_API_KEY', default='')
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",

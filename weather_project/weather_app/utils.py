@@ -7,7 +7,7 @@ def get_weather(city_name):
 
     api_key = settings.OPENWEATHER_API_KEY  # This comes from your .env via settings.py
     if not api_key:
-        raise ValueError('OPENWEATHER_API_KEY is not set in evironment')
+        raise ValueError('OPENWEATHER_API_KEY is not set in environment')
     url = "https://api.openweathermap.org/data/2.5/weather"
     params = {
         'q' : city_name,

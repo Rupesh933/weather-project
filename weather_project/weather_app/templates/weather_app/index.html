@@ -6,6 +6,7 @@
     <title>Weather Website</title>
     {% load static %}
     <link rel="stylesheet" href="{% static 'weather_app/style.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
     <div class="container">
@@ -25,9 +26,19 @@
             <h2 class="">{{ weather.city }}, {{ weather.country }}</h2>
             <div class="weather-main">
                 <img src="http://openweathermap.org/img/wn/{{ weather.icon }}@2x.png" alt="{{ weather.description }}">
-                <div class="tempreture">{{ weather.tempreture }}°C</div>
+                <div class="tempreture">{{ weather.tempreature }}°C</div>
+            </div>
+            <div class="details">
+                <p>Feels like: {{ weather.feel_like }}°C</p>
+                <p>{{ weather.description }}</p>
+                <p>Humanity: {{ weather.humidity }}%</p>
+                <p>Wind: {{ weather.wind_speed }} m/s</p>
+                <p>Pressure: {{ weather.pressure }}</p>
             </div>
         </div>
+        {% else %}
+        <div class="info">Enter a city above to see current weather.</div>
+        {% endif %}
     </div>
 </body>
 </html>

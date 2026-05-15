@@ -16,11 +16,11 @@ def index(request):
                     'city' : data['name'],
                     'country' : data['sys']['country'],
                     'tempreature' : data['main']['temp'],
-                    'feel_like' : data['main']['feel_like'],
+                    'feel_like' : data['main']['feels_like'],
                     'humidity' : data['main']['humidity'],
                     'pressure' : data['main']['pressure'],
                     'wind_speed' : data['wind']['speed'],
-                    'description' : data['weather']['description'],
+                    'description' : data['weather'][0]['description'].capitalize(),
                     'icon' : data['weather'][0]['icon']
                 }
             else:
@@ -31,4 +31,4 @@ def index(request):
         'weather' : weather_data,
         'error' : error_message
     }
-    return render(request, 'index.html', context)
+    return render(request, 'weather_app/index.html', context)
